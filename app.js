@@ -1,13 +1,13 @@
 const express = require('express');
+const path = require ('path');
 const app = express();
-const path = require('path');
+
 
 // Set up a route to serve the index.html file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'homework_foodblog.html'));
+app.get('/views', (req, res) => {
+  res.render('content');
 });
-const PORT = 3000;
+app.set('views',path.join(__dirname,'view'));
+app.set('view engine', 'pug');
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.listen(3000);
